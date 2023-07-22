@@ -290,6 +290,43 @@ func process(head *Node, nodes []*Node) {
 	process(head.Right, nodes)
 }
 
+// IsBST3 使用 Morris 算法
+// 注意不要中途返回，让二叉树还原
+func IsBST3(head *Node) bool {
+	if head == nil {
+		return true
+	}
+	cur := head
+	preValue := math.MinInt
+	result := true
+	for cur != nil {
+		if cur.Left == nil {
+			if preValue >= cur.Data {
+				result = false
+			}
+			preValue = cur.Data
+			cur = cur.Right // 如果左节点为空就往右走
+		} else {
+			mostRight := cur.Left // 找到左子树上的最右节点
+			for mostRight.Right != nil && mostRight.Right != cur {
+				mostRight = mostRight.Right
+			}
+			if mostRight.Right == nil {
+				mostRight.Right = cur // 用最右节点的右指针标记 cur 用于下次跳回 cur
+				cur = cur.Left        // cur 往左走
+			} else {
+				mostRight.Right = nil // 这是第二次来到 cur
+				if preValue >= cur.Data {
+					result = false
+				}
+				preValue = cur.Data
+				cur = cur.Right // cur 往右走
+			}
+		}
+	}
+	return result
+}
+
 // IsCBT 判断是否是一颗完全二叉树
 func IsCBT(head *Node) bool {
 	if head == nil {

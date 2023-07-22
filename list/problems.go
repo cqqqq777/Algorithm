@@ -20,6 +20,7 @@ func Reverse(pre, cur *Node) *Node {
 	}
 	next := cur.Next
 	cur.Next = pre
+	pre = cur
 	return Reverse(pre, next)
 }
 
