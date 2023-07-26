@@ -1,10 +1,9 @@
 package sort
 
 import (
-	"algorithm/heap"
+	"Algorithm/heap"
 	"math"
 	"math/rand"
-	"time"
 )
 
 func BubbleSort(sli []int) {
@@ -58,7 +57,6 @@ func QuickSort(sli []int) {
 
 func quickSort(arr []int, l, r int) {
 	if l < r {
-		rand.Seed(time.Now().UnixNano())
 		randIndex := rand.Intn(r-l+1) + l
 		arr[randIndex], arr[r] = arr[r], arr[randIndex]
 		p := partition(arr, l, r)
@@ -122,7 +120,7 @@ func merge(arr []int, l, r, mid int) {
 	help := make([]int, r-l+1)
 	i, p1, p2 := 0, l, mid+1
 	for p1 <= mid && p2 <= r {
-		if arr[p1] < arr[p2] {
+		if arr[p1] <= arr[p2] {
 			help[i] = arr[p1]
 			p1++
 		} else {
