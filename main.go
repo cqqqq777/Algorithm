@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	//nums := []int{1, 2, 3, 4, 5, 6, 4, 3, 2, 5, 6, 1, 1, 1, 2, 1, 1, 2, 3, 4, 4, 5}
@@ -111,4 +113,40 @@ func searchRange(nums []int, target int) []int {
 	}
 
 	return []int{leftPosition, rightPosition}
+}
+
+// 校验身份证号码
+func checkIDCard(idCard string) bool {
+	// 1. 长度校验
+	if len(idCard) != 18 {
+		return false
+	}
+	// 2. 前17位必须是数字
+	for i := 0; i < 17; i++ {
+		if idCard[i] < '0' || idCard[i] > '9' {
+			return false
+		}
+	}
+	// 3. 第18位必须是数字或者X
+	if idCard[17] != 'X' && (idCard[17] < '0' || idCard[17] > '9') {
+		return false
+	}
+	// 4. 校验码校验
+	// 4.1 获取前17位的权重和
+	weight := 0
+	for i := 0; i < 17; i++ {
+		weight += int(idCard[i]-'0') * (1 << uint(17-i))
+	}
+	// 4.2 获取校验码的权重
+	checkWeight := 0
+	if idCard[17] == 'X' {
+		checkWeight = 10
+	} else {
+		checkWeight = int(idCard[17] - '0')
+	}
+	// 4.3 校验
+	if (12-weight%11)%11 != checkWeight {
+		return false
+	}
+	return true
 }
