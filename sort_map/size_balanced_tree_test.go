@@ -20,14 +20,14 @@ func TestSBTree(t *testing.T) {
 	s.Put(32, 2)
 	fmt.Println(s.root.left.key)
 	fmt.Println(s.Get(32))
-	preOrder(s.root)
+	s.inOrder(s.root)
 }
 
-func preOrder(node *SBTNode) {
+func (sbt *SBTree) inOrder(node *SBTNode) {
 	if node == nil {
 		return
 	}
-	preOrder(node.left)
+	sbt.inOrder(node.left)
 	fmt.Println(node.key)
-	preOrder(node.right)
+	sbt.inOrder(node.right)
 }

@@ -167,11 +167,3 @@ func (bst *BinarySearchTree) delete(node *Node, key Key) {
 	}
 	bst.Size--
 }
-
-// LeftRotate rotates the tree left.
-func (bst *BinarySearchTree) LeftRotate() {
-	if bst.Root == nil {
-		return
-	}
-
-}

@@ -1,6 +1,5 @@
 /*
-Package sort_map provides a map Size Balanced Tree.
-TODO: improve reBalance(too much recursion due to stack overflow when the tree is too deep)
+Package sort_map provides a map with Size Balanced Tree.
 */
 
 package sort_map

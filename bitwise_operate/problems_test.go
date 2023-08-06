@@ -15,6 +15,7 @@ func TestIs2Power(t *testing.T) {
 }
 
 func TestIs4Power(t *testing.T) {
+	fmt.Println(Is4Power(1))   // expected output: true
 	fmt.Println(Is4Power(16))  // expected output: true
 	fmt.Println(Is4Power(64))  // expected output: true
 	fmt.Println(Is4Power(328)) // expected output: false

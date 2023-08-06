@@ -14,4 +14,14 @@ func TestAVL(t *testing.T) {
 	m.Put(8, 8)
 	m.Put(4, 4)
 	fmt.Println(m.root.right.left.key)
+	m.inOrder(m.root)
+}
+
+func (avl *AVLTree) inOrder(node *AVLNode) {
+	if node == nil {
+		return
+	}
+	avl.inOrder(node.left)
+	fmt.Println(node.key)
+	avl.inOrder(node.right)
 }
