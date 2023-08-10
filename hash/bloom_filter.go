@@ -42,7 +42,7 @@ func (b *BloomFilter) hash(str string) []int {
 func (b *BloomFilter) getBit(offset int) int {
 	blockIndex := offset / 8
 	bitIndex := offset % 8
-	return b.bitmap[blockIndex] >> bitIndex & 1
+	return int(b.bitmap[blockIndex] >> bitIndex & 1)
 }
 
 func (b *BloomFilter) setBit(offset int) {

@@ -9,6 +9,26 @@ package day06
 // 输入的第一行包含一个正整数t(1 <= t <= 1000), 表示测试用例数接下来每两行一个测试数据, 第一行一个正整数n(1 <= n <= 1000),表示道路的长度。
 // 第二行一个字符串s表示道路的构造,只包含'.'和'X'。输出描述：
 // 对于每个测试用例, 输出一个正整数表示最少需要多少盏路灯。
-func MinLights() {
-
+func MinLights(road string) int {
+	if road == "" {
+		return 0
+	}
+	res := 0
+	for i := 0; i < len(road); {
+		if road[i] == 'X' {
+			i++
+			continue
+		}
+		res++
+		if i+1 < len(road) && road[i+1] == '.' {
+			if i+2 < len(road) && road[i+2] == '.' {
+				i += 3
+			} else {
+				i += 2
+			}
+			continue
+		}
+		i++
+	}
+	return res
 }
