@@ -2,6 +2,8 @@ package heap
 
 type Comparator func(int, int) bool
 
+type Comparators[T comparable] func(a, b T) bool
+
 func MaxHeapComparator() Comparator {
 	return func(a int, b int) bool {
 		return a > b

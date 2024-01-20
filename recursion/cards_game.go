@@ -63,10 +63,3 @@ func WinnerScoreDP(arr []int) int {
 	}
 	return max(f[0][len(arr)-1], s[0][len(arr)-1])
 }
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}

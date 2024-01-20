@@ -4,20 +4,19 @@ import (
 	"fmt"
 	"math/rand"
 	"testing"
-	"time"
 )
 
 func generateSli() []int {
-	rand.Seed(time.Now().UnixNano())
 	sli := make([]int, 100)
 	for i := 0; i < 100; i++ {
-		sli = append(sli, rand.Intn(1000))
+		sli[i] = rand.Intn(1000)
 	}
 	return sli
 }
 
 func TestBubbleSort(t *testing.T) {
 	sli := generateSli()
+	fmt.Println(sli)
 	BubbleSort(sli)
 	fmt.Println(sli)
 }

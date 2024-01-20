@@ -97,10 +97,3 @@ func MinCoins3(arr []int, aim int) int {
 	}
 	return dp[aim]
 }
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}

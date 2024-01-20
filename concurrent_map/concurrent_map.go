@@ -13,9 +13,17 @@ var ErrTimeExpire = errors.New("time out")
 // 查询时若 key 不存在则阻塞并等待 maxWaitingTime 时间，若在该时间内有写入该 key 的操作，返回 value，超时则返回超时错误
 // 不能有死锁和 panic 风险
 type MyConcurrentMap struct {
-	sync.Mutex
+	sync.Locker
 	mp      map[int]int
 	keyToCh map[int]chan struct{}
+}
+
+func NewConcurrentMap(l sync.Locker) *MyConcurrentMap {
+	return &MyConcurrentMap{
+		l,
+		make(map[int]int),
+		make(map[int]chan struct{}),
+	}
 }
 
 func (m *MyConcurrentMap) Put(k, v int) {

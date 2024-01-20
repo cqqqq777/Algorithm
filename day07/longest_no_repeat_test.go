@@ -6,5 +6,5 @@ import (
 )
 
 func TestLongestNoRepeat(t *testing.T) {
-	fmt.Println(LongestNoRepeat("jghjguac")) // expected output: 6
+	fmt.Println(lengthOfLongestSubstring("jghjguac")) // expected output: 6
 }

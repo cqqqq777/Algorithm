@@ -6,7 +6,7 @@ func KMP(father, son string) int {
 		return -1
 	}
 	fatherStart, sonStart := 0, 0
-	next := GetNexts(son)
+	next := GetNext(son)
 	for fatherStart < len(father) && sonStart < len(son) {
 		if father[fatherStart] == son[sonStart] {
 			fatherStart++
@@ -23,17 +23,24 @@ func KMP(father, son string) int {
 	return -1
 }
 
-func GetNexts(str string) []int {
+func GetNext(str string) []int {
 	if len(str) <= 0 {
 		return []int{}
 	}
 	result := make([]int, len(str))
 	result[0] = -1
-	for i := 2; i < len(str); i++ {
-		for j := 1; j < i; j++ {
-			if str[:j] == str[i-j:i] {
-				result[i] = j
-			}
+
+	j := 0
+	for i := 2; i < len(str); {
+		if str[j] == str[i-1] {
+			result[i] = j + 1
+			i++
+			j++
+		} else if j == 0 {
+			result[i] = 0
+			i++
+		} else {
+			j = result[j]
 		}
 	}
 	return result

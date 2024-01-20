@@ -6,7 +6,7 @@ import (
 
 // Dijkstra 求连通图中某一节点到其他所有节点的最短路径
 func Dijkstra(head *Node) map[*Node]int {
-	distanceMap := make(map[*Node]int, 0)
+	distanceMap := make(map[*Node]int)
 	distanceMap[head] = 0
 	unlockedSet := make(map[*Node]struct{})
 	minNode := GetMinDistanceNode(distanceMap, unlockedSet)
@@ -26,11 +26,11 @@ func Dijkstra(head *Node) map[*Node]int {
 }
 
 func GetMinDistanceNode(distanceMap map[*Node]int, unlocked map[*Node]struct{}) *Node {
-	var minNode *Node = nil
+	var minNode *Node
 	minDistance := math.MaxInt
-	for k, v := range distanceMap {
+	for k, distance := range distanceMap {
 		if _, exist := unlocked[k]; !exist {
-			if v < minDistance {
+			if distance < minDistance {
 				minNode = k
 			}
 		}

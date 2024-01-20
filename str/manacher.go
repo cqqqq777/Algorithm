@@ -14,7 +14,7 @@ func Manacher(str string) int {
 		return 1
 	}
 	str = handleStr(str)            // 123 -> #1#2#1#
-	R, C, max := -1, -1, 0          // R 为最右边界+1，max 为经处理后的 str 最大回文半径
+	R, C, m := -1, -1, 0            // R 为最右边界+1，m 为经处理后的 str 最大回文半径
 	lenArr := make([]int, len(str)) // 记录每一位字符的回文半径
 	for i := 0; i < len(str); i++ {
 		if R > i {
@@ -33,9 +33,9 @@ func Manacher(str string) int {
 			R = i + lenArr[i]
 			C = i
 		}
-		max = int(math.Max(float64(max), float64(lenArr[i])))
+		m = int(math.Max(float64(m), float64(lenArr[i])))
 	}
-	return max - 1
+	return m - 1
 }
 
 func handleStr(str string) string {

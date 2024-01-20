@@ -15,13 +15,13 @@ func MaxValueRecur(weights, values []int, bag, weight, value, index int) int {
 		}
 		return value
 	}
-	max := 0
+	result := 0
 	if weights[index]+weight <= bag {
-		max = MaxValueRecur(weights, values, bag, weight+weights[index], value+values[index], index+1)
+		result = MaxValueRecur(weights, values, bag, weight+weights[index], value+values[index], index+1)
 	}
 	notChoose := MaxValueRecur(weights, values, bag, weight, value, index+1)
-	if max < notChoose {
-		max = notChoose
+	if result < notChoose {
+		result = notChoose
 	}
-	return max
+	return result
 }

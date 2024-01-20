@@ -15,7 +15,7 @@ func Kruscal(graph *Graph) []*Edge {
 	})
 	// map used to simulate sets
 	// key is node, value is the number of set
-	sets := make(map[*Node]int, 0)
+	sets := make(map[*Node]int)
 	i = 1
 	for _, v := range graph.Nodes {
 		sets[v] = i

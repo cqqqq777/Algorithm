@@ -20,6 +20,25 @@ func LongestNoRepeat(str string) int {
 	return res
 }
 
+func lengthOfLongestSubstring(s string) int {
+	if len(s) == 0 {
+		return 0
+	}
+
+	lastIndex := make([]int, 255)
+	for i := 0; i < 255; i++ {
+		lastIndex[i] = -1
+	}
+	pre, result := -1, 0
+	for k, v := range s {
+		pre = max(pre, lastIndex[v])
+		cur := k - pre
+		lastIndex[v] = k
+		result = max(result, cur)
+	}
+	return result
+}
+
 func max(a, b int) int {
 	if a > b {
 		return a

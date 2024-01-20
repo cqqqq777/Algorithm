@@ -41,10 +41,10 @@ func SelectionSort(sli []int) {
 	}
 
 	for i := 0; i < len(sli)-1; i++ {
-		min := i
+		minIndex := i
 		for j := i + 1; j < len(sli); j++ {
-			if sli[min] > sli[j] {
-				sli[min], sli[j] = sli[j], sli[min]
+			if sli[minIndex] > sli[j] {
+				sli[minIndex], sli[j] = sli[j], sli[minIndex]
 			}
 		}
 	}
