@@ -15,9 +15,20 @@ func maxWeight(node *Node) int {
 	if node == nil {
 		return 0
 	}
-	leftWeight, rightWeight := maxWeight(node.left), maxWeight(node.right)
-	if leftWeight > rightWeight {
-		return leftWeight + node.weight
+	res := node.weight
+
+	var recur func(node2 *Node) int
+	recur = func(curNode *Node) int {
+		if curNode == nil {
+			return 0
+		}
+		left := max(recur(curNode.left), 0)
+		right := max(recur(curNode.right), 0)
+
+		res = max(res, left+right+curNode.weight)
+
+		return curNode.weight + max(left, right)
 	}
-	return rightWeight + node.weight
+	recur(node)
+	return res
 }

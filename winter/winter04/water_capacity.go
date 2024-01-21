@@ -1,8 +1,7 @@
-package day04
+package winter04
 
-// WaterCapacity 给定容器直方图，返回容量
-// 局部观察每一个位置能够容纳多少水
-func WaterCapacity(height []int) int {
+// 给定直方图，求能接多少雨水
+func trap(height []int) int {
 	if height == nil || len(height) <= 2 {
 		return 0
 	}
@@ -19,11 +18,4 @@ func WaterCapacity(height []int) int {
 		res += max(min(leftMax[i], rightMax[i])-height[i], 0)
 	}
 	return res
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
