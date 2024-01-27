@@ -13,7 +13,7 @@ func maxProfit(prices []int) int {
 	}
 	// dp[i] 表示必须在第 i 天买入股票，最大的利润
 	// dp[i] + prices[i] 就表示 i 以后的最大价格
-	// 故 dp[i-1] = dp[i] + prices[i] - prices[i] (如果小于 0 就直接等于 0)
+	// 故 dp[i-1] = dp[i] + prices[i] - prices[i-1] (如果小于 0 就直接等于 0)
 	dp := make([]int, len(prices))
 	var res int
 	for i := len(prices) - 2; i >= 0; i-- {
