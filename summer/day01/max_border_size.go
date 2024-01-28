@@ -35,13 +35,6 @@ func maxBorderSize1(matrix [][]int) int {
 	return result
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
 // 先对矩阵做预处理，可以在确定点和边长的情况下快速判断是否构成正方形
 // 定义 right[i][j] 记录右边连续出现1的个数，down[i][j] 记录下方连续出现1的个数
 func maxBorderSize2(matrix [][]int) int {
