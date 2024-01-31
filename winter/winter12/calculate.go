@@ -17,6 +17,7 @@ func (s *Stack) Pop() int {
 	return res
 }
 
+// 注意如果有括号需要递归的情况，要传入 s 的指针
 func calculate(s string) int {
 	stack := make(Stack, 0)
 	sign := '+'
