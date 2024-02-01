@@ -4,7 +4,7 @@ import "math"
 
 // MaxBSTNodes
 // 找到一棵二叉树中，最大的搜索二叉子树，返回最大搜索二叉子树的节点个数。
-func MaxBSTNodes(root *treeNode) int {
+func MaxBSTNodes(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
@@ -12,11 +12,11 @@ func MaxBSTNodes(root *treeNode) int {
 }
 
 type info struct {
-	maxBSTHead           *treeNode
+	maxBSTHead           *TreeNode
 	max, min, maxBSTSize int
 }
 
-func maxBSTNodes(node *treeNode) *info {
+func maxBSTNodes(node *TreeNode) *info {
 	if node == nil {
 		return &info{maxBSTHead: nil, maxBSTSize: 0, min: math.MaxInt, max: math.MinInt}
 	}
