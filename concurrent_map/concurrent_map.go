@@ -47,7 +47,8 @@ func (m *MyConcurrentMap) Get(k int, maxWaitingTime time.Duration) (int, error) 
 	// 先判断此 key 先前是否被操作
 	ch, ok := m.keyToCh[k]
 	if !ok {
-		m.keyToCh[k] = make(chan struct{})
+		ch = make(chan struct{})
+		m.keyToCh[k] = ch
 	}
 	m.Unlock()
 	timer := time.NewTimer(maxWaitingTime)
