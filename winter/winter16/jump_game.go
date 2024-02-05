@@ -7,6 +7,7 @@ func canJump(nums []int) bool {
 		return true
 	}
 
+	// distance 维护已经遍历过的点能够到达的最远的地方
 	distance := 0
 	for i := 0; i < len(nums); i++ {
 		if i > distance {
